@@ -1,0 +1,24 @@
+{
+  "name": "truffle-starter",
+  "version": "1.0.0",
+  "description": "oraclize truffle-box",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ethereum-bridge": "0.6.1"
+  },
+  "scripts": {
+    "bridge": "./node_modules/.bin/ethereum-bridge -a 9 -H 127.0.0.1 -p 9545 --dev"
+  },
+  "keywords": [
+    "truffle",
+    "truffle-box",
+    "box",
+    "oraclize",
+    "oracle"
+  ],
+  "author": "oraclize",
+  "license": "MIT"
+}
