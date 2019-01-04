@@ -6,6 +6,7 @@ contract EthPrice is usingOraclize {
 
     uint public ethPriceUsd;
 
+    event LogInfo(string description);
     event LogNewEthPrice(string price);
     event LogNewOraclizeQuery(string description);
 
@@ -20,9 +21,16 @@ contract EthPrice is usingOraclize {
         // ...Do something with the USD Diesel price...
     }
 
-    function update() payable {
-        emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
-        oraclize_query("URL", "json(https://api.coinbase.com/v2/prices/ETH-USD/spot).data.amount");
+    function update() payable public {
+        //Check if we have enough remaining funds
+        if(oraclize_getPrice("URL") > address(this).balance){
+            emit LogInfo("Oraclize query was NOT sent, please add some ETH to cover for the query fee");
+        } else {
+           emit LogInfo("Oraclize query was sent, standing by for the answer.."); 
+           emit LogNewOraclizeQuery("Oraclize query was sent, standing by for the answer..");
+           oraclize_query("URL", "json(https://api.coinbase.com/v2/prices/ETH-USD/spot).data.amount");
+        }
+
     }
 
 }
