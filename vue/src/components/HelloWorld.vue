@@ -59,7 +59,7 @@ export default class HelloWorld extends Vue {
       this.loading = "Price is getting updated....";
       setTimeout(function() {
         window.location.reload(true);
-      }, 10000);
+      }, 15000);
     }
   }
   mounted() {
