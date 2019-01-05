@@ -10,21 +10,24 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import Web3 from "web3";
 const MyContract = require("../../build/contracts/EthPrice.json");
+
+const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:9545"));
+
+let myContract = new web3.eth.Contract(
+  MyContract.abi,
+  "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+);
+
 @Component
 export default class HelloWorld extends Vue {
   contractValue: string = "";
   currentValue: string = "";
   isValueUpdated: boolean = false;
   loading: string = "";
+
   async setValue() {
-    const web3 = new Web3(
-      new Web3.providers.HttpProvider("http://localhost:9545")
-    );
-    let myContract = new web3.eth.Contract(
-      MyContract.abi,
-      "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
-    );
     let setValue = await myContract.methods.update().send({
+      //ToDO clean
       from: "0x627306090abab3a6e1400e9345bc60c78a8bef57",
       gas: "900000",
       value: "500000000000000000"
@@ -34,13 +37,6 @@ export default class HelloWorld extends Vue {
     }
   }
   async getCurrentValue() {
-    const web3 = new Web3(
-      new Web3.providers.HttpProvider("http://localhost:9545")
-    );
-    let myContract = new web3.eth.Contract(
-      MyContract.abi,
-      "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
-    );
     let getValue = await myContract.methods
       .ethPriceUsd()
       .call()
