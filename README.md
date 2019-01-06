@@ -28,7 +28,9 @@ truffle develop
 ```
 npm run bridge
 ```
-### Compile the contract
+***These two termials have to run in order to compile and migrate the contract!***
+
+### Open another terminal and compile the smart contract
 ```
 truffle compile
 ```
