@@ -20,23 +20,21 @@ npm install
 ```
 npm install -g truffle 
 ```
+### Run the ethereum-bridge 
+```
+npm run bridge
+```
 ### Run truffle in develop mode
 ```
 truffle develop
 ```
-### Run the ethereum-bridge in a seperate terminal
+### Compile the smart contract 
 ```
-npm run bridge
+truffle(develop)> compile
 ```
-***These two termials have to run in order to compile and migrate the contract!***
-
-### Open another terminal and compile the smart contract
+### Migrate the smart contract
 ```
-truffle compile
-```
-### Migrate the contract
-```
-truffle migrate --development --reset
+truffle(develop)> migrate --development --reset
 ```
 ### Get the contract address from the ethereum-bridge terminal
 Output should be something like this
