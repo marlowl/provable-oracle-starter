@@ -16,26 +16,37 @@ Get the current ETH/USD price from the Coinbase API through an Ethereum Oracle
 npm install
 ```
 
-### Install truffle
+### Install Truffle
 ```
 npm install -g truffle 
 ```
-### Run the ethereum-bridge 
-```
-npm run bridge
-```
-### Run truffle in develop mode
+
+### Run Truffle develop (spawns a development blockchain)
 ```
 truffle develop
 ```
-### Compile the smart contract 
+
+### Open a seperate terminal and run the ethereum-bridge (see package.json for what it does)
+```
+npm run bridge
+```
+Wait till it is fully loaded and you see the following message
+
+```
+Please add this line to your contract constructor:
+
+OAR = OraclizeAddrResolverI(address);
+```
+
+### Compile the contract inside the Truffle develop console
 ```
 truffle(develop)> compile
 ```
-### Migrate the smart contract
+### Migrate the contract also inside the Truffle develop console
 ```
 truffle(develop)> migrate --development --reset
 ```
+
 ### Get the contract address from the ethereum-bridge terminal
 Output should be something like this
 ```
@@ -56,3 +67,5 @@ let myContract = new web3.eth.Contract(
 ```
 npm run serve
 ```
+
+Enjoy!
