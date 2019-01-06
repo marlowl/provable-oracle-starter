@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-/build
+
 
 /tests/e2e/reports/
 selenium-debug.log
@@ -25,3 +25,4 @@ yarn-error.log*
 *.sw*
 bridge.log
 build/contracts/*
+build/
