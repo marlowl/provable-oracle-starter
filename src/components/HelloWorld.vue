@@ -24,11 +24,11 @@ export default class HelloWorld extends Vue {
   currentValue: string = "";
   isValueUpdated: boolean = false;
   loading: string = "";
+  accountAddress: string = ""
 
   async setValue() {
     let setValue = await myContract.methods.update().send({
-      //ToDO clean
-      from: "0x627306090abab3a6e1400e9345bc60c78a8bef57",
+      from: this.accountAddress,
       gas: "900000",
       value: "500000000000000000"
     });
@@ -43,6 +43,11 @@ export default class HelloWorld extends Vue {
       .then(result => {
         this.currentValue = parseFloat(result).toFixed(2);
       });
+
+    let accounts = await web3.eth.getAccounts().then(result => {
+        this.accountAddress = result[0]
+    });
+    
   }
   @Watch("isValueUpdated")
   onPropertyChanged(newValue: boolean, oldValue: boolean) {
