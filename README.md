@@ -16,9 +16,9 @@ Get the current ETH/USD price from the Coinbase API through an Ethereum Oracle
 npm install
 ```
 
-### Install Truffle
+### Install Truffle (Works on the truffle version below, newer versions might get a compile error later on)
 ```
-npm install -g truffle 
+npm install -g truffle@4.1.15
 ```
 
 ### Run Truffle develop (spawns a development blockchain)
